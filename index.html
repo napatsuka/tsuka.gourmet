@@ -5,38 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>にゃん兵衛 | 公式キャラクターサイト</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
   <meta name="description" content="黒猫キャラクター「にゃん兵衛」の公式ページ。プロフィール、スキル、出演作品などを紹介。">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <nav class="nav container">
-      <a class="logo" href="#">にゃん<span>兵衛</span></a>
-      <ul class="nav-list">
-        <li><a href="#profile">プロフィール</a></li>
-        <li><a href="#skills">スキル</a></li>
-        <li><a href="#gallery">ギャラリー</a></li>
-        <li><a href="#contact">ファンメール</a></li>
-      </ul>
-      <button class="cta">詳細を見る</button>
-    </nav>
+    <div class="nav container">
+      <a class="logo" href="#">にゃん兵衛</a>
+      <nav class="nav-links">
+        <a href="#skills">スキル</a>
+        <a href="#gallery">ギャラリー</a>
+        <a href="#contact">ファンメール</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>にゃん兵衛</h1>
-          <p class="catchcopy">謎めいた黒猫。華麗なる夜の戦士。</p>
-          <p class="description">かわいらしい見た目とは裏腹に、謎めいた魅力を持つ黒猫キャラクター。仲間思いで、どんなピンチでも颯爽と現れる。</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#profile">プロフィール</a>
-            <a class="btn ghost" href="#gallery">ギャラリーを見る</a>
-          </div>
+      <div class="container hero-inner centered">
+        <div class="hero-visual-large">
+          <img src="assets/knights-character.png" alt="にゃん兵衛" class="hero-character-large">
         </div>
-        <div class="hero-visual" id="hero-character">
-          <img src="assets/knights-character.png" alt="ナイツキャラクター" class="character-image">
-          <div id="threejs-container"></div>
+        <div class="hero-text centered-text">
+          <h1>にゃん兵衛</h1>
+          <p class="catchcopy">かわいいけれど少し不思議。</p>
+          <p class="description">にゃん兵衛のスタンプコレクションや作品を集めた公式ギャラリーへようこそ。</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#gallery">ギャラリーを見る</a>
+            <a class="btn ghost" href="#contact">ファンメール</a>
+          </div>
         </div>
       </div>
     </section>
@@ -80,40 +78,44 @@
       </div>
     </section>
 
-    <section id="gallery" class="gallery container">
+    <section id="skills" class="skills container">
       <h2>ギャラリー</h2>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="assets/knights-gallery-1.png" alt="記憶おい">
+          <div class="stamp"><img src="assets/knights-gallery-1.png" alt="記憶おい"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-2.png" alt="飲もう">
+          <div class="stamp"><img src="assets/knights-gallery-2.png" alt="飲もう"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-3.png" alt="飲び笑て">
+          <div class="stamp"><img src="assets/knights-gallery-3.png" alt="飲みたい"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-4.png" alt="先飲んでる">
+          <div class="stamp"><img src="assets/knights-gallery-4.png" alt="先飲んでる"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-5.png" alt="セくさん飲は">
+          <div class="stamp"><img src="assets/knights-gallery-5.png" alt="たくさん飲む"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-6.png" alt="飲む？">
+          <div class="stamp"><img src="assets/knights-gallery-6.png" alt="飲む？"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-7.png" alt="乾杯">
+          <div class="stamp"><img src="assets/knights-gallery-7.png" alt="乾杯"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-8.png" alt="Cheers">
+          <div class="stamp"><img src="assets/knights-gallery-8.png" alt="Cheers"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-9.png" alt="今飲もう">
+          <div class="stamp"><img src="assets/knights-gallery-9.png" alt="全然酔ってない"></div>
         </div>
         <div class="gallery-item">
-          <img src="assets/knights-gallery-10.png" alt="楽しく酔った">
+          <div class="stamp"><img src="assets/knights-gallery-10.png" alt="楽しく酔った"></div>
         </div>
       </div>
+    </section>
+    <section id="gallery" class="gallery container">
+      <h2>ギャラリー</h2>
+      
     </section>
 
     <section id="contact" class="contact container">
