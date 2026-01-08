@@ -1,0 +1,118 @@
+/* ベース */
+:root{
+  --bg1: #000000;
+  --bg2: #0a0a0a;
+  --accent: #4ADE80; /* green-400 */
+  --glass: rgba(255,255,255,0.06);
+  --text: #e6eef8;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", sans-serif;color:var(--text);background:linear-gradient(135deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.container{max-width:1100px;margin:0 auto;padding:2rem;position:relative;z-index:1}
+
+/* ヘッダー */
+.site-header{position:sticky;top:0;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-bottom:1px solid rgba(255,255,255,0.03)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:1.2rem;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-list{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
+.nav-list a{color:rgba(230,238,248,0.8);text-decoration:none}
+.cta{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:0.5rem 0.9rem;border-radius:8px;color:var(--text)}
+
+/* ヒーロー */
+.hero{padding:4rem 0}
+.hero-inner{display:flex;gap:2rem;align-items:center}
+.hero-text{flex:1}
+.hero h1{font-size:2.8rem;margin:0 0 0.5rem;background:linear-gradient(90deg,#4ade80,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .catchcopy{font-size:1.3rem;font-weight:600;color:var(--accent);margin:0.5rem 0 1rem}
+.hero .description{opacity:0.85;font-size:1.1rem;line-height:1.6}
+.hero-actions{margin-top:1rem;display:flex;gap:0.8rem}
+.btn{display:inline-block;padding:0.6rem 1rem;border-radius:10px;text-decoration:none;color:inherit}
+.btn.primary{background:linear-gradient(90deg,#06b6d4,#4ade80);color:#021124;font-weight:700}
+.btn.ghost{border:1px solid rgba(255,255,255,0.06);background:transparent}
+.hero-visual{width:300px;max-width:40%;height:320px;perspective:1000px;position:relative;display:flex;align-items:center;justify-content:center;background:#ffffff;border-radius:20px;z-index:5}
+.character-image{width:85%;height:85%;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 0 30px rgba(74, 222, 128, 0.4))}
+#threejs-container{width:100%;height:100%;border-radius:20px;overflow:hidden;box-shadow:0 0 50px rgba(74, 222, 128, 0.15);position:absolute;top:0;left:0;z-index:1;border:3px solid #000000}
+
+/* 3Dカード */
+.card-3d{perspective:1000px;height:220px;padding:0;overflow:hidden;position:relative}
+.card-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;cursor:pointer}
+.card-3d:hover .card-inner{transform:rotateY(180deg)}
+.card-face{position:absolute;width:100%;height:100%;padding:1.2rem;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
+.card-front{background:var(--glass)}
+.card-back{background:linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(6, 182, 212, 0.1));transform:rotateY(180deg);border-color:rgba(74, 222, 128, 0.2)}
+.card-back p{margin:0}
+
+/* Showcase */
+.showcase{padding:3rem 0;perspective:1000px}
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.showcase-item{height:280px;border-radius:10px;background:linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(6, 182, 212, 0.08));display:flex;align-items:center;justify-content:center;font-weight:600;transition:all 0.3s ease;transform:translateZ(0);border:1px solid rgba(74, 222, 128, 0.15);cursor:pointer;position:relative;overflow:hidden}
+.showcase-item img{width:100%;height:100%;object-fit:cover}
+.showcase-item::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg, transparent 30%, rgba(74, 222, 128, 0.1) 50%, transparent 70%);opacity:0;transition:opacity 0.3s;pointer-events:none}
+.showcase-item:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 40px rgba(74, 222, 128, 0.2);border-color:rgba(74, 222, 128, 0.4)}
+.showcase-item:hover::before{opacity:1;animation:shimmer 0.6s}
+
+/* Contact */
+.contact{padding:3rem 0}
+.contact-form{display:flex;flex-direction:column;gap:0.6rem;max-width:520px}
+.contact-form input,.contact-form textarea{padding:0.8rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+
+/* プロフィール */
+.profile{margin:3rem 0}
+.profile h2,.skills h2,.gallery h2{font-size:2rem;margin-bottom:2rem}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.profile-info h3,.profile-details h3{font-size:1.4rem;margin-bottom:1rem}
+.profile-info dl{display:flex;flex-direction:column;gap:0.8rem}
+.profile-info dt{font-weight:600;color:var(--accent)}
+.profile-info dd{margin:0 0 0 1rem;opacity:0.9}
+.profile-details p{line-height:1.8;margin-bottom:1rem}
+
+/* スキル */
+.skills{padding:3rem 0}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.skill-card{background:linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(6, 182, 212, 0.1));padding:1.5rem;border-radius:12px;border:1px solid rgba(74, 222, 128, 0.2);transition:all 0.3s ease}
+.skill-card h3{margin-top:0;color:var(--accent)}
+.skill-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(74, 222, 128, 0.15)}
+
+/* ギャラリー */
+.gallery{padding:3rem 0;display:flex;justify-content:center;background:#ffffff;position:relative;z-index:2}
+.gallery h2{color:#000000}
+.gallery-grid{display:grid;grid-template-columns:repeat(5,370px);gap:1.5rem;transform:scale(0.58);transform-origin:top center;width:max-content}
+.gallery-item{height:320px;background:linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(6, 182, 212, 0.08));border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(74, 222, 128, 0.15);cursor:pointer;transition:all 0.3s ease;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover}
+.gallery-item:hover{transform:scale(1.05);box-shadow:0 15px 35px rgba(74, 222, 128, 0.25);border-color:rgba(74, 222, 128, 0.4)}
+
+.site-footer{padding:1.5rem 0;text-align:center;opacity:0.7;border-top:1px solid rgba(255,255,255,0.02)}
+
+/* レスポンシブ */
+@media(max-width:900px){
+  .hero-inner{flex-direction:column-reverse}
+  .hero-visual{max-width:100%;width:100%;height:300px}
+  .grid{grid-template-columns:1fr}
+  .showcase-grid{grid-template-columns:1fr}
+  .profile-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+}
+
+/* アニメーション */
+@keyframes shimmer{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+
+@keyframes meteor{
+  0%{transform:translate(-100px, 100vh) rotate(-45deg) scale(1);opacity:1}
+  100%{transform:translate(100vw, -100px) rotate(-45deg) scale(1);opacity:0}
+}
+
+.meteor{position:fixed;width:40px;height:40px;pointer-events:none;z-index:0;object-fit:contain}
+
+.site-header{position:relative;z-index:10}
+
+/* 小さなインタラクション */
+.nav-list a:hover,.cta:hover{opacity:0.9}
+.card{transition:transform .25s ease, box-shadow .25s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(2,6,23,0.6)}

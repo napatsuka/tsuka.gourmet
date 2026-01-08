@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>にゃん兵衛 | 公式キャラクターサイト</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="黒猫キャラクター「にゃん兵衛」の公式ページ。プロフィール、スキル、出演作品などを紹介。">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="#">にゃん<span>兵衛</span></a>
+      <ul class="nav-list">
+        <li><a href="#profile">プロフィール</a></li>
+        <li><a href="#skills">スキル</a></li>
+        <li><a href="#gallery">ギャラリー</a></li>
+        <li><a href="#contact">ファンメール</a></li>
+      </ul>
+      <button class="cta">詳細を見る</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>にゃん兵衛</h1>
+          <p class="catchcopy">謎めいた黒猫。華麗なる夜の戦士。</p>
+          <p class="description">かわいらしい見た目とは裏腹に、謎めいた魅力を持つ黒猫キャラクター。仲間思いで、どんなピンチでも颯爽と現れる。</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#profile">プロフィール</a>
+            <a class="btn ghost" href="#gallery">ギャラリーを見る</a>
+          </div>
+        </div>
+        <div class="hero-visual" id="hero-character">
+          <img src="assets/knights-character.png" alt="ナイツキャラクター" class="character-image">
+          <div id="threejs-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" class="showcase">
+      <div class="container">
+        <h2>作品</h2>
+        <div class="showcase-grid" id="showcase-grid">
+          <div class="showcase-item" data-index="0">
+            <img src="assets/project-1.png" alt="プロジェクト1">
+          </div>
+          <div class="showcase-item" data-index="1">
+            <img src="assets/project-2.png" alt="プロジェクト2">
+          </div>
+          <div class="showcase-item" data-index="2">
+            <img src="assets/project-3.png" alt="プロジェクト3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills container">
+      <h2>スキル</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>🌙 夜間活動</h3>
+          <p>暗い夜でも完璧に活動できる異能の力。</p>
+        </div>
+        <div class="skill-card">
+          <h3>🔍 謎解き</h3>
+          <p>複雑な問題も瞬時に解き明かす知能。</p>
+        </div>
+        <div class="skill-card">
+          <h3>⚔️ 華麗な身のこなし</h3>
+          <p>優雅かつ素早い動きで敵を圧倒。</p>
+        </div>
+        <div class="skill-card">
+          <h3>💫 謎の魔力</h3>
+          <p>未知のエネルギーで仲間を守る。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery container">
+      <h2>ギャラリー</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-1.png" alt="記憶おい">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-2.png" alt="飲もう">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-3.png" alt="飲び笑て">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-4.png" alt="先飲んでる">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-5.png" alt="セくさん飲は">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-6.png" alt="飲む？">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-7.png" alt="乾杯">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-8.png" alt="Cheers">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-9.png" alt="今飲もう">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/knights-gallery-10.png" alt="楽しく酔った">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h2>お問い合わせ</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="お名前" required>
+        <input type="email" placeholder="メールアドレス" required>
+        <textarea placeholder="メッセージ" rows="4"></textarea>
+        <button class="btn primary" type="submit">送信</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 CoolSite</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
