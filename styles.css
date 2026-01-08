@@ -97,6 +97,37 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
   .gallery-grid{grid-template-columns:1fr}
 }
 
+@media(max-width:768px){
+  body{font-size:14px}
+  .container{padding:1.5rem}
+  .hero h1{font-size:2rem}
+  .hero .catchcopy{font-size:1.1rem}
+  .hero .description{font-size:0.95rem}
+  .hero-visual{width:100%;max-width:100%;height:250px;margin-top:1.5rem}
+  .nav-list{gap:0.5rem;font-size:0.9rem}
+  .nav-list a{display:none}
+  .nav-list li:first-child a{display:inline}
+  .showcase-grid{grid-template-columns:1fr}
+  .showcase-item{height:200px}
+  .skills-grid{grid-template-columns:1fr}
+  .gallery{padding:2rem 0}
+  .gallery-grid{transform:scale(0.75);margin-bottom:-60px}
+  .gallery h2{font-size:1.5rem}
+  .contact-form{max-width:100%}
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:1.5rem}
+  .hero .catchcopy{font-size:1rem}
+  .site-header{padding:1rem 0}
+  .logo{font-size:1rem}
+  .nav-list{gap:0.3rem}
+  .cta{padding:0.4rem 0.7rem;font-size:0.85rem}
+  .showcase-item{height:150px}
+  .btn{padding:0.5rem 0.8rem;font-size:0.9rem}
+  .gallery-grid{transform:scale(0.6);margin-bottom:-80px}
+}
+
 /* アニメーション */
 @keyframes shimmer{
   0%{transform:translateX(-100%)}
