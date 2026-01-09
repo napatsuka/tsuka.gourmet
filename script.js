@@ -1,122 +1,84 @@
-// 流星アニメーション（画像版）
-function createMeteor(){
-  const meteor = document.createElement('img');
-  meteor.className = 'meteor';
-  meteor.src = 'assets/meteor-icon.png';
-  meteor.alt = 'meteor';
-  
-  const startX = Math.random() * window.innerWidth;
-  const duration = 2000 + Math.random() * 2000;
-  const delay = Math.random() * 2000;
-  
-  meteor.style.left = startX + 'px';
-  meteor.style.top = '-80px';
-  meteor.style.animation = `meteor ${duration}ms linear ${delay}ms forwards`;
-  
-  document.body.appendChild(meteor);
-  
-  setTimeout(()=>meteor.remove(), duration + delay + 100);
-}
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-// 定期的に流星を生成
-setInterval(createMeteor, 1000);
+// Add animation to elements when they come into view
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
 
-// 3Dシーン初期化
-let scene, camera, renderer, cube;
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
-function initThreeJS(){
-  const container = document.getElementById('threejs-container');
-  if(!container || container.clientWidth === 0) return;
+// Observe all news items and pickup items
+document.querySelectorAll('.news-item, .pickup-item, .animation-item').forEach(el => {
+    observer.observe(el);
+});
 
-  // シーン設定
-  scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xffffff);
+// Active nav link highlighting
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
 
-  const width = container.clientWidth;
-  const height = container.clientHeight;
-  
-  camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-  camera.position.z = 3;
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`.nav a[href="#${section.id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+});
 
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(width, height);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  container.appendChild(renderer.domElement);
-
-  // 3Dキューブ作成
-  const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-  const materials = [
-    new THREE.MeshPhongMaterial({ color: 0x4ade80, emissive: 0x2d6b3c }),
-    new THREE.MeshPhongMaterial({ color: 0x06b6d4, emissive: 0x034d5a }),
-    new THREE.MeshPhongMaterial({ color: 0x7c3aed, emissive: 0x3d1a76 }),
-    new THREE.MeshPhongMaterial({ color: 0xf59e0b, emissive: 0x78471f }),
-    new THREE.MeshPhongMaterial({ color: 0xec4899, emissive: 0x761b52 }),
-    new THREE.MeshPhongMaterial({ color: 0x14b8a6, emissive: 0x0a5d52 })
-  ];
-  cube = new THREE.Mesh(geometry, materials);
-  scene.add(cube);
-
-  // ライト
-  const light1 = new THREE.PointLight(0x4ade80, 1.2, 100);
-  light1.position.set(5, 5, 5);
-  scene.add(light1);
-
-  const light2 = new THREE.PointLight(0x06b6d4, 0.8, 100);
-  light2.position.set(-5, -5, 5);
-  scene.add(light2);
-
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-  scene.add(ambientLight);
-
-  // リサイズ対応
-  window.addEventListener('resize', ()=>{
-    const newWidth = container.clientWidth;
-    const newHeight = container.clientHeight;
-    camera.aspect = newWidth / newHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(newWidth, newHeight);
-  });
-
-  // アニメーションループ
-  function animate(){
-    requestAnimationFrame(animate);
-    if(cube){
-      cube.rotation.x += 0.005;
-      cube.rotation.y += 0.008;
+// Add some interactive feedback and make .news-item clickable
+document.querySelectorAll('.news-item').forEach(item => {
+    const link = item.querySelector('h3 a');
+    if (link) {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', function(e) {
+            if (e.target.closest('a')) return; // let real links behave normally
+            window.open(link.href, '_blank', 'noopener,noreferrer');
+        });
     }
-    renderer.render(scene, camera);
-  }
-  animate();
-}
+});
 
-// 3Dカードフリップ
-document.addEventListener('DOMContentLoaded', ()=>{
-  // Three.js初期化
-  initThreeJS();
-
-  const cta = document.querySelector('.cta');
-  if(cta){
-    cta.addEventListener('click', ()=>{
-      const firstSection = document.querySelector('.hero');
-      firstSection && firstSection.scrollIntoView({behavior:'smooth'});
+document.querySelectorAll('.pickup-item').forEach(item => {
+    item.addEventListener('click', function() {
+        console.log('Pickup item clicked');
     });
-  }
+});
 
-  // フォーム送信のダミー処理
-  const form = document.querySelector('.contact-form');
-  if(form){
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      alert('送信ありがとうございます！(デモ)');
-      form.reset();
+// Make .news-content clickable: click the content area to open the h3 > a link in a new tab
+document.querySelectorAll('.news-content').forEach(div => {
+    const link = div.querySelector('h3 a');
+    if (!link) return;
+    div.style.cursor = 'pointer';
+    div.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return; // let real links behave normally
+        window.open(link.href, '_blank', 'noopener,noreferrer');
     });
-  }
-
-  // Showcaseアイテムにホバーエフェクト
-  const showcaseItems = document.querySelectorAll('.showcase-item');
-  showcaseItems.forEach((item, index)=>{
-    item.addEventListener('mouseenter', ()=>{
-      item.style.zIndex = 10;
-    });
-  });
 });

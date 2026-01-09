@@ -1,138 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>にゃん兵衛 | 公式キャラクターサイト</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-  <meta name="description" content="黒猫キャラクター「にゃん兵衛」の公式ページ。プロフィール、スキル、出演作品などを紹介。">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>にゃん兵衛公式サイト | NYANBEI OFFICIAL WEBSITE</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="nav container">
-      <a class="logo" href="#">にゃん兵衛</a>
-      <nav class="nav-links">
-        <a href="#skills">スキル</a>
-        <a href="#gallery">ギャラリー</a>
-        <a href="#contact">ファンメール</a>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>にゃん兵衛公式サイト<br><span>NYANBEI OFFICIAL WEBSITE</span></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="">トップ</a></li>
+                    <li><a href="#news">ニュース</a></li>
+                    <li><a href="about.html">にゃん兵衛とは</a></li>
+                    <li><a href="#animation">アニメ</a></li>
+                    <li><a href="#shop">お取扱いSHOP</a></li>
+                </ul>
+            </nav>
+            <div class="social-links">
+                <a href="#" class="social-icon line" title="LINE">L</a>
+                <a href="#" class="social-icon instagram" title="Instagram">@</a>
+                <a href="#" class="social-icon twitter" title="Twitter">𝕏</a>
+            </div>
+        </div>
+    </header>
 
-  <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="container hero-inner centered">
-        <div class="hero-visual-large">
-          <img src="assets/knights-character.png" alt="にゃん兵衛" class="hero-character-large">
-        </div>
-        <div class="hero-text centered-text">
-          <h1>にゃん兵衛</h1>
-          <p class="catchcopy">かわいいけれど少し不思議。</p>
-          <p class="description">にゃん兵衛のスタンプコレクションや作品を集めた公式ギャラリーへようこそ。</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#gallery">ギャラリーを見る</a>
-            <a class="btn ghost" href="#contact">ファンメール</a>
-          </div>
-        </div>
-      </div>
+        <img src="assets/images/hero.jpg" alt="にゃん兵衛ヒーロー画像" class="hero-image">
     </section>
 
-    <section id="showcase" class="showcase">
-      <div class="container">
-        <h2>作品</h2>
-        <div class="showcase-grid" id="showcase-grid">
-          <div class="showcase-item" data-index="0">
-            <img src="assets/project-1.png" alt="プロジェクト1">
-          </div>
-          <div class="showcase-item" data-index="1">
-            <img src="assets/project-2.png" alt="プロジェクト2">
-          </div>
-          <div class="showcase-item" data-index="2">
-            <img src="assets/project-3.png" alt="プロジェクト3">
-          </div>
+    <!-- News Section -->
+    <section id="news" class="news-section">
+        <div class="container">
+            <h2>ニュース</h2>
+            <div class="news-list">
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/images/news1.png" alt="ニュース画像">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">お知らせ イベント</span>
+                        <h3><a href="https://store.line.me/stickershop/product/32538389/ja" target="_blank" rel="noopener noreferrer">にゃん兵衛２ LINEスタンプ販売</a></h3>
+                        <span class="news-date">2026/1/8 17:41</span>
+                    </div>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/images/news4.png" alt="グッズ画像">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">グッズ</span>
+                        <h3>にゃん兵衛 刺繍シリーズ 12/19～発売(オンラインストア)...</h3>
+                        <span class="news-date">2025/12/19 12:10</span>
+                    </div>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/images/news2.png" alt="新シリーズ画像">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">グッズ</span>
+                        <h3>にゃん兵衛 ETO シリーズ 12/18～発売(オンラインスト...</h3>
+                        <span class="news-date">2025/12/18 12:10</span>
+                    </div>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="assets/images/news3.png" alt="お知らせ画像">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">お知らせ</span>
+                        <h3>にゃん兵衛カレンダーアプリ、にゃん兵衛家計簿アプリ、にゃん兵衛メモ...</h3>
+                        <span class="news-date">2025/12/15 10:00</span>
+                    </div>
+                </article>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="skills" class="skills container">
-      <h2>スキル</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>🌙 夜間活動</h3>
-          <p>暗い夜でも完璧に活動できる異能の力。</p>
+    <!-- Pickup Section -->
+    <section class="pickup-section">
+        <div class="container">
+            <h2>ピックアップ</h2>
+            <div class="pickup-content">
+                <div class="pickup-item">
+                    <img src="https://via.placeholder.com/300x300/FFB6C1/FFFFFF?text=MUKASHIBANASHI" alt="むかし話">
+                    <h3>むかし話</h3>
+                </div>
+                <div class="pickup-item">
+                    <img src="https://via.placeholder.com/300x300/FFB6C1/FFFFFF?text=LINE+STORE" alt="LINE STORE">
+                    <h3>LINE STORE</h3>
+                </div>
+            </div>
         </div>
-        <div class="skill-card">
-          <h3>🔍 謎解き</h3>
-          <p>複雑な問題も瞬時に解き明かす知能。</p>
-        </div>
-        <div class="skill-card">
-          <h3>⚔️ 華麗な身のこなし</h3>
-          <p>優雅かつ素早い動きで敵を圧倒。</p>
-        </div>
-        <div class="skill-card">
-          <h3>💫 謎の魔力</h3>
-          <p>未知のエネルギーで仲間を守る。</p>
-        </div>
-      </div>
     </section>
 
-    <section id="skills" class="skills container">
-      <h2>ギャラリー</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-1.png" alt="記憶おい"></div>
+    <!-- Animation Section -->
+    <section id="animation" class="animation-section">
+        <div class="container">
+            <h2>ショートアニメーション</h2>
+            <div class="animation-content">
+                <div class="animation-item">
+                    <img src="https://via.placeholder.com/400x300/FFE4E1/333333?text=SHORT+ANIMATION" alt="ショートアニメーション">
+                    <h3>「温泉旅館にゃん兵衛荘」</h3>
+                </div>
+            </div>
+            <a href="#" class="link-button">アニメシリーズ一覧</a>
         </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-2.png" alt="飲もう"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-3.png" alt="飲みたい"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-4.png" alt="先飲んでる"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-5.png" alt="たくさん飲む"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-6.png" alt="飲む？"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-7.png" alt="乾杯"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-8.png" alt="Cheers"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-9.png" alt="全然酔ってない"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="stamp"><img src="assets/knights-gallery-10.png" alt="楽しく酔った"></div>
-        </div>
-      </div>
-    </section>
-    <section id="gallery" class="gallery container">
-      <h2>ギャラリー</h2>
-      
     </section>
 
-    <section id="contact" class="contact container">
-      <h2>お問い合わせ</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="お名前" required>
-        <input type="email" placeholder="メールアドレス" required>
-        <textarea placeholder="メッセージ" rows="4"></textarea>
-        <button class="btn primary" type="submit">送信</button>
-      </form>
+    <!-- SNS Section -->
+    <section class="sns-section">
+        <div class="container">
+            <h2>sakumaru SNSアカウント</h2>
+            <div class="sns-links">
+                <a href="#" class="sns-icon line">LINE</a>
+                <a href="#" class="sns-icon instagram">Instagram</a>
+                <a href="#" class="sns-icon twitter">Twitter</a>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">© 2026 CoolSite</div>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LINE FRIENDS</h4>
+                    <ul>
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#">L</a>
+                    <a href="#">𝕏</a>
+                    <a href="#">f</a>
+                    <a href="#">@</a>
+                    <a href="#">TT</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>©sakumaru</p>
+            </div>
+        </div>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
