@@ -209,16 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })();
 
-// Add .scale-50 on small touch devices to visually shrink the page to 50%
-(function() {
-    try {
-        const isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-        const w = Math.min(window.innerWidth || 0, window.screen.width || 0);
-        // Apply for phones up to 600px wide to show more content on larger phones (iPhone 16 etc.)
-        if (isTouch && w <= 600) {
-            document.documentElement.classList.add('scale-50');
-        }
-        window.addEventListener('resize', () => {
-            const ww = Math.min(window.innerWidth || 0, window.screen.width || 0);
-            if (isTouch && ww <= 600) document.documentElement.classList.add('scale-50');
-})();
+// Automatic 50% scaling disabled per user request.
+// The .scale-50 CSS class remains available for manual toggling if needed.
+

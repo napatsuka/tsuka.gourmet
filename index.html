@@ -20,7 +20,7 @@
                     <li><a href="#news">ニュース</a></li>
                     <li><a href="about.html">にゃん兵衛とは</a></li>
                     <li><a href="#animation">アニメ</a></li>
-                    <li><a href="#shop">お取扱いSHOP</a></li>
+                    <li><a href="#shop">SHOP　</a></li>
                 </ul>
                 <div class="social-links">
                     <a href="#" class="social-icon line" title="LINE">L</a>
@@ -33,7 +33,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="assets/images/hero.jpg" alt="にゃん兵衛ヒーロー画像" class="hero-image">
+        <picture>
+            <!-- Mobile and small tablets: use smaller hero image -->
+            <source media="(max-width: 768px)" srcset="assets/images/hero2.jpg">
+            <!-- Desktop fallback -->
+            <img src="assets/images/hero.jpg" alt="にゃん兵衛ヒーロー画像" class="hero-image">
+        </picture>
     </section>
 
     <!-- News Section -->

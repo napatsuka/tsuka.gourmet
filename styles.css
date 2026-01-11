@@ -184,18 +184,56 @@ body {
 /* Hero Section */
 .hero {
     width: 100%;
-    height: auto;
     overflow: hidden;
     background-color: var(--primary-color);
+    /* tall hero on desktop */
     min-height: 400px;
+    position: relative;
 }
 
 .hero-image {
     width: 100%;
-    height: auto;
+    height: 100%; /* fill the hero container */
     display: block;
-    min-height: 400px;
+    object-fit: cover; /* ensure image always covers container without empty space */
+    object-position: center;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    /* let the image determine height on smaller screens */
+    height: auto;
+    min-height: 120px; /* reasonable minimum */
+    background-color: #ffffff; /* avoid visible color gap */
+  }
+  .hero-image {
+    width: 100%;
+    height: auto; /* scale vertically with viewport */
     object-fit: cover;
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    height: auto;
+    min-height: 100px;
+    background-color: #ffffff; /* avoid visible color gap on very small screens */
+  }
+  .hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Ensure clear separation between hero and news on tiny screens */
+  .news-section {
+    padding-top: 20px; /* maintain breathing room */
+    border-top: 1px solid transparent; /* prevents margin overlap/collapse */
+  }
 }
 
 /* News Section */
@@ -476,73 +514,73 @@ body {
     opacity: 0.95;
 }
 
-/* iPhone-specific compact rules: target iOS browsers first, with a small-screen fallback */
+/* iPhone-specific readable tweaks (iOS): prefer legibility over extreme compacting */
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 420px) {
-    /* ultra-compact iPhone sizing to maximize visible content */
-    html { font-size: 10px; }
-    body { line-height: 1.08; }
+    /* iOS-friendly readable sizing */
+    html { font-size: 12px; }
+    body { line-height: 1.28; }
 
-    .container { padding: 0 4px; }
+    .container { padding: 0 8px; }
 
     /* header / logo */
-    .header { padding: 4px 0; }
-    .logo h1 { font-size: 11px; }
-    .logo h1 span { font-size: 7px; }
+    .header { padding: 8px 0; }
+    .logo h1 { font-size: 14px; }
+    .logo h1 span { font-size: 10px; }
 
     /* nav */
-    .nav a { font-size: 9px; }
-    .nav ul { gap: 4px; }
-    .menu-toggle { font-size: 14px; padding: 4px; }
+    .nav a { font-size: 13px; }
+    .nav ul { gap: 8px; }
+    .menu-toggle { font-size: 18px; padding: 8px; min-width:44px; min-height:44px; }
 
     /* hero */
-    .hero { min-height: 80px; }
-    .hero-image { height: 80px; object-fit: cover; object-position: center; }
+    .hero { min-height: 100px; }
+    .hero-image { height: 100px; object-fit: cover; object-position: center; }
 
     /* sections */
-    .news-section, .pickup-section, .animation-section { padding: 12px 0; }
+    .news-section, .pickup-section, .animation-section { padding: 20px 0; }
 
-    /* make news show as two compact columns */
-    .news-list { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .news-item { padding: 6px; gap: 4px; }
-    .news-image img { width: 28px; height: 28px; }
-    .news-item h3 { font-size: 10px; }
-    .news-date { font-size: 9px; }
+    /* news layout favors single column for readability */
+    .news-list { grid-template-columns: repeat(1, 1fr); gap: 12px; }
+    .news-item { padding: 12px; gap: 10px; }
+    .news-image img { width: 64px; height: 64px; }
+    .news-item h3 { font-size: 15px; }
+    .news-date { font-size: 12px; }
 
-    /* pickup: show two items per row on mobile to fit more (shrunk further) */
-    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .pickup-item img { width: 100%; height: 44px; object-fit: cover; border-radius: 6px; }
-    .pickup-caption { font-size: 10px; }
+    /* pickup: two columns to balance items and readability */
+    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .pickup-item img { width: 100%; height: 72px; object-fit: cover; border-radius: 8px; }
+    .pickup-caption { font-size: 13px; }
 
-    /* animation/shop images (shrunk further) */
-    .animation-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .animation-item img { max-height: 48px; object-fit: cover; border-radius: 6px; }
+    /* animation/shop images */
+    .animation-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .animation-item img { max-height: 72px; object-fit: cover; border-radius: 8px; }
 
     /* SNS button sizes */
-    .sns-section { padding: 12px 0; }
-    .sns-icon { padding: 4px 8px; font-size: 10px; }
+    .sns-section { padding: 20px 0; }
+    .sns-icon { padding: 8px 12px; font-size: 12px; }
 
-    /* make menu height smaller on compact screens */
-    .header.menu-open .nav { max-height: 220px; }
+    /* slightly taller menu area for readable links */
+    .header.menu-open .nav { max-height: 360px; }
   }
 
   @media (max-width: 360px) {
-    /* extra tiny devices */
-    html { font-size: 9px; }
-    body { line-height: 1.05; }
-    .container { padding: 0 4px; }
-    .logo h1 { font-size: 10px; }
-    .logo h1 span { font-size: 7px; }
-    .hero { min-height: 64px; }
-    .hero-image { height: 64px; }
-    .header.menu-open .nav { max-height: 200px; }
+    /* tiny iOS phones: still keep legibility */
+    html { font-size: 11px; }
+    body { line-height: 1.18; }
+    .container { padding: 0 6px; }
+    .logo h1 { font-size: 13px; }
+    .logo h1 span { font-size: 9px; }
+    .hero { min-height: 84px; }
+    .hero-image { height: 84px; }
+    .header.menu-open .nav { max-height: 320px; }
 
-    .news-list { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-    .news-image img { width: 22px; height: 22px; }
-    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-    .pickup-item img { height: 32px; }
-    .animation-item img { height: 36px; }
-    .news-item h3 { font-size: 9px; }
+    .news-list { grid-template-columns: repeat(1, 1fr); gap: 8px; }
+    .news-image img { width: 48px; height: 48px; }
+    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .pickup-item img { height: 56px; }
+    .animation-item img { height: 56px; }
+    .news-item h3 { font-size: 13px; }
   }
 }
 
@@ -558,6 +596,18 @@ body {
   .news-list { grid-template-columns: repeat(3, 1fr); gap: 12px; }
 }
 
+/* Slightly narrower phones (typical modern phones) - show 3 pickup columns and 2 news columns */
+@media (min-width: 380px) and (max-width: 520px) {
+  .pickup-section .pickup-content,
+  .animation-section .pickup-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .pickup-item img { height: 84px; }
+  .animation-item img { max-height: 84px; }
+  .news-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
 /* Touch devices (phones) — compact layout even on larger phone widths like iPhone 16 */
 @media (pointer: coarse) and (max-width: 980px) {
   /* denser layout on touch phones: allow many small columns */
@@ -571,9 +621,12 @@ body {
   .pickup-caption { font-size: 11px; }
   .news-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
 
+  /* Use white hero background on touch phones to avoid color gaps */
+  .hero { background-color: #ffffff; }
+
   /* slightly tighter news layout */
   .news-item { padding: 6px; }
-}
+} 
 
 /* iPhone-specific compact tweaks (iPhone 16 and similar) */
 .is-iphone .pickup-section .pickup-content,
@@ -583,8 +636,8 @@ body {
 }
 .is-iphone .pickup-item img { height: 36px !important; }
 .is-iphone .animation-item img { max-height: 40px !important; }
-.is-iphone .hero-image { height: 80px; object-fit: cover; }
-.is-iphone .pickup-caption { font-size: 10px; }
+.is-iphone .hero-image { height: 100%; object-fit: cover; }
+.is-iphone .pickup-caption { font-size: 13px; }
 
 /* end touch/iPhone tweaks */
 
@@ -603,11 +656,48 @@ body {
   }
 }
 
-/* Fallback: general small-screen compact adjustments */
+/* Small-screen readability improvements */
 @media (max-width: 420px) {
-  html { font-size: 12px; }
-  .container { padding: 0 8px; }
-  .header { padding: 8px 0; }
+  /* make body text more readable on narrow screens */
+  html { font-size: 14px; }
+  body { line-height: 1.6; }
+
+  /* reduce side padding slightly but keep room for tap targets */
+  .container { padding: 0 12px; }
+  .header { padding: 10px 0; }
+
+  /* larger, finger-friendly menu toggle */
+  .menu-toggle {
+    padding: 10px;
+    font-size: 22px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 6px;
+  }
+
+  /* ensure menu links are easy to tap when open */
+  .header.menu-open .nav ul {
+    gap: 16px;
+  }
+  .header.menu-open .nav a {
+    padding: 12px 8px;
+    font-size: 16px;
+    display: block;
+  }
+
+  /* slightly smaller news images to balance layout */
+  .news-image img { width: 80px; height: 80px; }
+  .news-item h3 { font-size: 16px; line-height: 1.5; }
+
+  /* Pickup section: keep compact but readable captions */
+  .pickup-caption { font-size: 15px; height: auto; min-height: 40px; }
+  .pickup-section .pickup-content { gap: 18px; }
+
+  /* ensure interactive items have comfortable spacing */
+  .news-item, .pickup-item { padding: 12px; }
+
+  /* keep footer / sns spacing reasonable on very small screens */
+  .sns-section { padding: 40px 0; }
 }
 
 /* SNS Section */
