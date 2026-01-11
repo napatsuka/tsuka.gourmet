@@ -479,56 +479,78 @@ body {
 /* iPhone-specific compact rules: target iOS browsers first, with a small-screen fallback */
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 420px) {
-    /* more compact iPhone sizing */
-    html { font-size: 13px; }
-    body { line-height: 1.3; }
+    /* ultra-compact iPhone sizing to maximize visible content */
+    html { font-size: 10px; }
+    body { line-height: 1.08; }
 
-    .container { padding: 0 10px; }
+    .container { padding: 0 4px; }
 
     /* header / logo */
-    .header { padding: 10px 0; }
-    .logo h1 { font-size: 15px; }
-    .logo h1 span { font-size: 9px; }
+    .header { padding: 4px 0; }
+    .logo h1 { font-size: 11px; }
+    .logo h1 span { font-size: 7px; }
 
     /* nav */
-    .nav a { font-size: 12px; }
-    .nav ul { gap: 10px; }
-    .menu-toggle { font-size: 20px; padding: 6px; }
+    .nav a { font-size: 9px; }
+    .nav ul { gap: 4px; }
+    .menu-toggle { font-size: 14px; padding: 4px; }
 
     /* hero */
-    .hero { min-height: 180px; }
+    .hero { min-height: 80px; }
+    .hero-image { height: 80px; object-fit: cover; object-position: center; }
 
     /* sections */
-    .news-section, .pickup-section, .animation-section { padding: 30px 0; }
+    .news-section, .pickup-section, .animation-section { padding: 12px 0; }
 
-    .news-image img { width: 64px; height: 64px; }
-    .pickup-content { gap: 12px; }
-    .pickup-caption { font-size: 11px; height: auto; }
+    /* make news show as two compact columns */
+    .news-list { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .news-item { padding: 6px; gap: 4px; }
+    .news-image img { width: 28px; height: 28px; }
+    .news-item h3 { font-size: 10px; }
+    .news-date { font-size: 9px; }
+
+    /* pickup: show two items per row on mobile to fit more (shrunk) */
+    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .pickup-item img { width: 100%; height: 56px; object-fit: cover; border-radius: 6px; }
+    .pickup-caption { font-size: 10px; }
+
+    /* animation/shop images (shrunk) */
+    .animation-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .animation-item img { max-height: 64px; object-fit: cover; border-radius: 6px; }
 
     /* SNS button sizes */
-    .sns-section { padding: 30px 0; }
-    .sns-icon { padding: 8px 14px; font-size: 12px; }
+    .sns-section { padding: 12px 0; }
+    .sns-icon { padding: 4px 8px; font-size: 10px; }
 
     /* make menu height smaller on compact screens */
-    .header.menu-open .nav { max-height: 380px; }
+    .header.menu-open .nav { max-height: 220px; }
   }
 
   @media (max-width: 360px) {
-    /* ultra compact for small iPhones */
-    html { font-size: 12px; }
-    .container { padding: 0 8px; }
-    .logo h1 { font-size: 14px; }
-    .logo h1 span { font-size: 9px; }
-    .hero { min-height: 160px; }
-    .header.menu-open .nav { max-height: 320px; }
+    /* extra tiny devices */
+    html { font-size: 9px; }
+    body { line-height: 1.05; }
+    .container { padding: 0 4px; }
+    .logo h1 { font-size: 10px; }
+    .logo h1 span { font-size: 7px; }
+    .hero { min-height: 64px; }
+    .hero-image { height: 64px; }
+    .header.menu-open .nav { max-height: 200px; }
+
+    .news-list { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+    .news-image img { width: 24px; height: 24px; }
+    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+    .pickup-item img { height: 40px; }
+    .animation-item img { height: 48px; }
+    .news-item h3 { font-size: 9px; }
   }
 }
 
 /* Fallback: general small-screen compact adjustments */
 @media (max-width: 420px) {
-  html { font-size: 13px; }
-  .container { padding: 0 10px; }
-  .header { padding: 10px 0; }
+  html { font-size: 12px; }
+  .container { padding: 0 8px; }
+  .header { padding: 8px 0; }
 }
 
 /* SNS Section */
