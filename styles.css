@@ -560,27 +560,33 @@ body {
 
 /* Touch devices (phones) — compact layout even on larger phone widths like iPhone 16 */
 @media (pointer: coarse) and (max-width: 980px) {
+  /* denser layout on touch phones: allow many small columns */
   .pickup-section .pickup-content,
   .animation-section .pickup-content {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 6px;
   }
-  .pickup-item img { height: 52px; }
-  .animation-item img { max-height: 56px; }
+  .pickup-item img { height: 44px; }
+  .animation-item img { max-height: 48px; }
   .pickup-caption { font-size: 11px; }
-  .news-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .news-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
+
+  /* slightly tighter news layout */
+  .news-item { padding: 6px; }
 }
 
 /* iPhone-specific compact tweaks (iPhone 16 and similar) */
 .is-iphone .pickup-section .pickup-content,
 .is-iphone .animation-section .pickup-content {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 4px;
 }
-.is-iphone .pickup-item img { height: 40px !important; }
-.is-iphone .animation-item img { max-height: 44px !important; }
-.is-iphone .hero-image { height: 88px; object-fit: cover; }
-.is-iphone .pickup-caption { font-size: 11px; }
+.is-iphone .pickup-item img { height: 36px !important; }
+.is-iphone .animation-item img { max-height: 40px !important; }
+.is-iphone .hero-image { height: 80px; object-fit: cover; }
+.is-iphone .pickup-caption { font-size: 10px; }
+
+/* end touch/iPhone tweaks */
 
 /* 50% scale on mobile: apply via class .scale-50 (uses zoom where supported, fallback to transform) */
 .scale-50 {

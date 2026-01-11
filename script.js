@@ -214,16 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         const isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
         const w = Math.min(window.innerWidth || 0, window.screen.width || 0);
-        // Apply for phones up to 480px wide (adjust if needed)
-        if (isTouch && w <= 480) {
+        // Apply for phones up to 600px wide to show more content on larger phones (iPhone 16 etc.)
+        if (isTouch && w <= 600) {
             document.documentElement.classList.add('scale-50');
         }
         window.addEventListener('resize', () => {
             const ww = Math.min(window.innerWidth || 0, window.screen.width || 0);
-            if (isTouch && ww <= 480) document.documentElement.classList.add('scale-50');
-            else document.documentElement.classList.remove('scale-50');
-        });
-    } catch (e) {
-        // ignore
-    }
+            if (isTouch && ww <= 600) document.documentElement.classList.add('scale-50');
 })();
