@@ -188,3 +188,23 @@ document.addEventListener('DOMContentLoaded', () => {
         setMenuOpen(false);
     });
 });
+
+// iPhone 16 detector: add .is-iphone class to <html> for targeted CSS tweaks
+(function() {
+    try {
+        const ua = navigator.userAgent || '';
+        const isIphone = /iPhone/.test(ua);
+        const w = Math.min(window.screen.width || 0, window.innerWidth || 0);
+        // Target typical iPhone widths (approx 380–460 CSS pixels) — adjust as needed
+        if (isIphone && w >= 380 && w <= 460) {
+            document.documentElement.classList.add('is-iphone');
+        }
+        window.addEventListener('orientationchange', () => {
+            const ww = Math.min(window.screen.width || 0, window.innerWidth || 0);
+            if (isIphone && ww >= 380 && ww <= 460) document.documentElement.classList.add('is-iphone');
+            else document.documentElement.classList.remove('is-iphone');
+        });
+    } catch (e) {
+        // ignore errors
+    }
+})();

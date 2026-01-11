@@ -571,6 +571,17 @@ body {
   .news-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
 }
 
+/* iPhone-specific compact tweaks (iPhone 16 and similar) */
+.is-iphone .pickup-section .pickup-content,
+.is-iphone .animation-section .pickup-content {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.is-iphone .pickup-item img { height: 40px !important; }
+.is-iphone .animation-item img { max-height: 44px !important; }
+.is-iphone .hero-image { height: 88px; object-fit: cover; }
+.is-iphone .pickup-caption { font-size: 11px; }
+
 /* Fallback: general small-screen compact adjustments */
 @media (max-width: 420px) {
   html { font-size: 12px; }
