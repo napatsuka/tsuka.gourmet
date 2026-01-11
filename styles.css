@@ -509,14 +509,14 @@ body {
     .news-item h3 { font-size: 10px; }
     .news-date { font-size: 9px; }
 
-    /* pickup: show two items per row on mobile to fit more (shrunk) */
-    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .pickup-item img { width: 100%; height: 56px; object-fit: cover; border-radius: 6px; }
+    /* pickup: show two items per row on mobile to fit more (shrunk further) */
+    .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .pickup-item img { width: 100%; height: 44px; object-fit: cover; border-radius: 6px; }
     .pickup-caption { font-size: 10px; }
 
-    /* animation/shop images (shrunk) */
-    .animation-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .animation-item img { max-height: 64px; object-fit: cover; border-radius: 6px; }
+    /* animation/shop images (shrunk further) */
+    .animation-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .animation-item img { max-height: 48px; object-fit: cover; border-radius: 6px; }
 
     /* SNS button sizes */
     .sns-section { padding: 12px 0; }
@@ -538,12 +538,37 @@ body {
     .header.menu-open .nav { max-height: 200px; }
 
     .news-list { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-    .news-image img { width: 24px; height: 24px; }
+    .news-image img { width: 22px; height: 22px; }
     .pickup-section .pickup-content { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-    .pickup-item img { height: 40px; }
-    .animation-item img { height: 48px; }
+    .pickup-item img { height: 32px; }
+    .animation-item img { height: 36px; }
     .news-item h3 { font-size: 9px; }
   }
+}
+
+/* Mid-size mobile: 3 columns for pickup/animation to show more items */
+@media (min-width: 421px) and (max-width: 768px) {
+  .pickup-section .pickup-content,
+  .animation-section .pickup-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .pickup-item img { height: 72px; }
+  .animation-item img { max-height: 72px; }
+  .news-list { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+}
+
+/* Touch devices (phones) — compact layout even on larger phone widths like iPhone 16 */
+@media (pointer: coarse) and (max-width: 980px) {
+  .pickup-section .pickup-content,
+  .animation-section .pickup-content {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+  .pickup-item img { height: 52px; }
+  .animation-item img { max-height: 56px; }
+  .pickup-caption { font-size: 11px; }
+  .news-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
 }
 
 /* Fallback: general small-screen compact adjustments */
