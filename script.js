@@ -145,3 +145,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const workers = [];
     for (let i = 0; i < concurrency; i++) workers.push(worker());
 });
+
+// Mobile menu toggle behavior
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const header = document.querySelector('.header');
+    const nav = document.getElementById('main-nav');
+
+    if (!menuToggle || !header || !nav) return;
+
+    function setMenuOpen(open) {
+        header.classList.toggle('menu-open', open);
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    menuToggle.addEventListener('click', (e) => {
+        const isOpen = header.classList.contains('menu-open');
+        setMenuOpen(!isOpen);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && header.classList.contains('menu-open')) {
+            setMenuOpen(false);
+        }
+    });
+
+    // Close when clicking outside nav/menu button
+    document.addEventListener('click', (e) => {
+        if (!header.classList.contains('menu-open')) return;
+        if (e.target.closest('.header')) return;
+        setMenuOpen(false);
+    });
+});
