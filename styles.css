@@ -199,6 +199,18 @@ body {
     object-position: center;
 }
 
+/* Desktop: when hero.jpg is used, keep fixed height */
+@media (min-width: 769px) {
+  .hero {
+    height: 400px;
+    max-height: 400px;
+  }
+  .hero-image {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     /* let the image determine height on smaller screens */
