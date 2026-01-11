@@ -582,6 +582,21 @@ body {
 .is-iphone .hero-image { height: 88px; object-fit: cover; }
 .is-iphone .pickup-caption { font-size: 11px; }
 
+/* 50% scale on mobile: apply via class .scale-50 (uses zoom where supported, fallback to transform) */
+.scale-50 {
+  /* prefer zoom for WebKit (iPhone Safari) */
+  zoom: 0.5;
+}
+
+/* Fallback for browsers that don't support zoom: scale container and expand width to compensate */
+@supports not (zoom: 0.5) {
+  .scale-50 body > .container {
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    width: 200%;
+  }
+}
+
 /* Fallback: general small-screen compact adjustments */
 @media (max-width: 420px) {
   html { font-size: 12px; }

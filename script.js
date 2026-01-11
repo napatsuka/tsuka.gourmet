@@ -208,3 +208,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // ignore errors
     }
 })();
+
+// Add .scale-50 on small touch devices to visually shrink the page to 50%
+(function() {
+    try {
+        const isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        const w = Math.min(window.innerWidth || 0, window.screen.width || 0);
+        // Apply for phones up to 480px wide (adjust if needed)
+        if (isTouch && w <= 480) {
+            document.documentElement.classList.add('scale-50');
+        }
+        window.addEventListener('resize', () => {
+            const ww = Math.min(window.innerWidth || 0, window.screen.width || 0);
+            if (isTouch && ww <= 480) document.documentElement.classList.add('scale-50');
+            else document.documentElement.classList.remove('scale-50');
+        });
+    } catch (e) {
+        // ignore
+    }
+})();
