@@ -57,14 +57,21 @@ body {
         display: block;
     }
     .nav {
-        display: none;
+        display: block; /* use max-height to animate open/close */
         width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
     }
     .social-links {
         display: none;
     }
     .header.menu-open .nav {
-        display: block;
+        max-height: 480px; /* enough to show items; adjust if you add more content */
+        opacity: 1;
+        transform: translateY(0);
         position: absolute;
         left: 0;
         right: 0;
@@ -80,21 +87,30 @@ body {
         gap: 12px;
         align-items: flex-start;
     }
-    .header.menu-open .social-links {
+    .header.menu-open .nav .social-links {
         display: flex;
         gap: 15px;
-        padding: 10px 20px;
+        padding-top: 12px;
         border-top: 1px solid var(--border-color);
-        background: #fff;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: calc(100% + 200px);
+        margin-top: 12px;
+        justify-content: flex-start;
     }
     /* Make header container position relative so absolute menu is positioned correctly */
     .header .container {
         position: relative;
     }
+}
+
+@media (min-width: 769px) {
+  /* Ensure nav behaves as a flex container on desktop so social links (inside nav) align right */
+  .nav {
+      display: flex;
+      align-items: center;
+  }
+
+  .nav .social-links {
+      margin-left: auto;
+  }
 }
 
 .logo h1 {
@@ -458,6 +474,48 @@ body {
 .stickers-section .link-button:hover {
     background-color: #009e00;
     opacity: 0.95;
+}
+
+/* iPhone-specific compact rules: target iOS browsers first, with a small-screen fallback */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 420px) {
+    /* slightly reduce base size for iPhone to fit more content */
+    html { font-size: 14px; }
+    body { line-height: 1.4; }
+
+    .container { padding: 0 12px; }
+
+    /* header / logo */
+    .header { padding: 12px 0; }
+    .logo h1 { font-size: 16px; }
+    .logo h1 span { font-size: 10px; }
+
+    /* nav */
+    .nav a { font-size: 13px; }
+    .nav ul { gap: 14px; }
+    .menu-toggle { font-size: 22px; }
+
+    /* hero */
+    .hero { min-height: 220px; }
+
+    /* sections */
+    .news-section, .pickup-section, .animation-section { padding: 40px 0; }
+
+    .news-image img { width: 76px; height: 76px; }
+    .pickup-content { gap: 16px; }
+    .pickup-caption { font-size: 12px; height: auto; }
+
+    /* SNS button sizes */
+    .sns-section { padding: 40px 0; }
+    .sns-icon { padding: 10px 18px; font-size: 13px; }
+  }
+}
+
+/* Fallback: general small-screen compact adjustments */
+@media (max-width: 420px) {
+  html { font-size: 14px; }
+  .container { padding: 0 12px; }
+  .header { padding: 12px 0; }
 }
 
 /* SNS Section */

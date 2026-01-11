@@ -158,6 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('menu-open', open);
         menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+        // Change the icon to a close mark when opened for clarity
+        menuToggle.textContent = open ? '✕' : '≡';
+        if (open) {
+            const firstLink = nav.querySelector('a');
+            if (firstLink) firstLink.focus();
+        } else {
+            // return focus to the toggle button
+            menuToggle.focus();
+        }
     }
 
     menuToggle.addEventListener('click', (e) => {
