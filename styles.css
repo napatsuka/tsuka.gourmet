@@ -100,7 +100,7 @@ body {
     color: white;
 }
 
-.social-icon.twitter {
+.social-icon.x {
     background-color: #000;
     color: white;
 }
@@ -199,7 +199,7 @@ body {
 /* Pickup Section */
 .pickup-section {
     padding: 60px 0;
-    background-color: var(--secondary-color);
+    background-color: #cccccc;
 }
 
 .pickup-section h2 {
@@ -211,7 +211,7 @@ body {
 
 .pickup-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
@@ -225,13 +225,86 @@ body {
     transform: translateY(-5px);
 }
 
+.pickup-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .pickup-item img {
     width: 100%;
-    max-width: 300px;
-    height: 300px;
-    object-fit: cover;
+    aspect-ratio: 1 / 1; /* square box */
+    height: auto; /* height determined by aspect-ratio */
+    object-fit: contain; /* show whole image */
     border-radius: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    background-color: #f5f5f5; /* placeholder background for letterboxing */
+    display: block;
+}
+
+.pickup-caption {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-top: 8px;
+    height: 40px; /* fixed caption height to align items */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 8px;
+    overflow: hidden;
+}
+
+.pickup-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.pickup-item a:hover .pickup-caption {
+    color: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+  .pickup-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .pickup-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pickup section: 6 columns on wide screens, with responsive adjustments */
+.pickup-section .pickup-content {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .pickup-section .pickup-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .pickup-section .pickup-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .pickup-section .pickup-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .pickup-section .pickup-content {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pickup-item h3 {
@@ -250,6 +323,36 @@ body {
     margin-bottom: 40px;
     text-align: center;
     color: var(--text-color);
+}
+
+/* Animation section: 6 columns on wide screens */
+.animation-section .pickup-content {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .animation-section .pickup-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .animation-section .pickup-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .animation-section .pickup-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .animation-section .pickup-content {
+    grid-template-columns: 1fr;
+  }
 }
 
 .animation-content {
@@ -291,10 +394,20 @@ body {
     opacity: 0.8;
 }
 
+/* Stickers section: make its button LINE green */
+.stickers-section .link-button {
+    background-color: #00C300; /* LINE green */
+}
+
+.stickers-section .link-button:hover {
+    background-color: #009e00;
+    opacity: 0.95;
+}
+
 /* SNS Section */
 .sns-section {
     padding: 60px 0;
-    background-color: var(--secondary-color);
+    background-color: #cccccc;
     text-align: center;
 }
 
@@ -567,7 +680,7 @@ body {
 
 .stickers-section {
     padding: 60px 0;
-    background-color: var(--secondary-color);
+    background-color: #f5f5f5;
 }
 
 .stickers-section h2 {
@@ -591,9 +704,12 @@ body {
 }
 
 .stickers-content img {
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
     border-radius: 12px;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Responsive Design */

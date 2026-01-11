@@ -82,3 +82,66 @@ document.querySelectorAll('.news-content').forEach(div => {
         window.open(link.href, '_blank', 'noopener,noreferrer');
     });
 });
+
+// Attempt to load shop images from shop page (og:image) using a public scrape endpoint.
+// NOTE: This uses an external scraping service and may fail or be rate-limited; it's a best-effort enhancement.
+async function fetchOgImage(pageUrl, timeoutMs = 5000) {
+    const proxy = 'https://r.jina.ai/http://'; // scrapes and returns HTML as text
+    // build a safe proxy target by stripping leading protocol (http:// or https://)
+    const target = pageUrl.replace(/^https?:\/\//i, '');
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+        const res = await fetch(proxy + target, { signal: controller.signal });
+        clearTimeout(id);
+        if (!res.ok) {
+            console.warn('og image fetch returned non-ok status', res.status, proxy + target);
+            return null;
+        }
+        const text = await res.text();
+        // Look for og:image or twitter:image
+        const ogMatch = text.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i);
+        if (ogMatch && ogMatch[1]) return ogMatch[1];
+        const twMatch = text.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i);
+        if (twMatch && twMatch[1]) return twMatch[1];
+        return null;
+    } catch (err) {
+        if (err.name === 'AbortError') console.warn('og image fetch timed out for', pageUrl);
+        else console.warn('og image fetch failed for', pageUrl, err);
+        return null;
+    }
+}
+
+// For each .pickup-item link, try to fetch og:image and replace the <img>
+document.addEventListener('DOMContentLoaded', () => {
+    // Limit concurrency and set per-request timeout to avoid long hangs
+    const anchors = Array.from(document.querySelectorAll('.pickup-item a[href]'));
+    const concurrency = 3;
+    let idx = 0;
+
+    async function worker() {
+        while (idx < anchors.length) {
+            const i = idx++;
+            const anchor = anchors[i];
+            const pageUrl = anchor.href;
+            const imgEl = anchor.querySelector('img');
+            if (!imgEl) continue;
+            try {
+                const ogImg = await fetchOgImage(pageUrl, 4000); // 4s timeout
+                if (ogImg) {
+                    const src = ogImg.startsWith('http') ? ogImg : 'https:' + ogImg;
+                    imgEl.src = src;
+                    imgEl.onerror = () => {
+                        console.warn('Failed to load og:image', src);
+                    };
+                }
+            } catch (e) {
+                console.warn('worker error', e);
+            }
+        }
+    }
+
+    // start workers
+    const workers = [];
+    for (let i = 0; i < concurrency; i++) workers.push(worker());
+});
